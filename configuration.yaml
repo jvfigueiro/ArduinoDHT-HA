@@ -1,0 +1,31 @@
+sensor:
+  - platform: serial
+    serial_port: /dev/ttyACM0
+    baudrate: 9600
+    name: "Arduino Mega" # Name of the sensor that will receive the "humidity;temperature" strings
+    
+template:
+  - sensor:
+      - name: "Temperatura Ambiente"
+        state: "{{ states('sensor.arduino_mega').split(';')[1] | float }}"
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+
+      - name: "Umidade Ambiente"
+        state: "{{ states('sensor.arduino_mega').split(';')[0] | float }}"
+        unit_of_measurement: "%"
+        device_class: humidity
+        state_class: measurement
+
+      - name: "Temperatura Rack"
+        state: "{{ states('sensor.arduino_mega').split(';')[3] | float }}"
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+
+      - name: "Umidade Rack"
+        state: "{{ states('sensor.arduino_mega').split(';')[2] | float }}"
+        unit_of_measurement: "%"
+        device_class: humidity
+        state_class: measurement
