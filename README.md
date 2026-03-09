@@ -25,7 +25,7 @@ The Arduino reads the analog sensors every 5 seconds and generates a formatted *
 
 ---
 
-## 💻 1. The Arduino Code (`DHT-ha.c`)
+## 💻 1. Arduino Code
 
 The C++ *sketch* uses the `DHT.h` library to read both sensors simultaneously. 
 The logic formats the data in the following pattern and sends it at 9600 *baud*:
@@ -38,7 +38,7 @@ Example of the Serial port output:
 
 ---
 
-## ⚙️ 2. Home Assistant Configuration (`configuration.yaml`)
+## ⚙️ 2. Home Assistant Configuration
 
 For Home Assistant to understand the data coming through the USB port (`/dev/ttyACM0`), we use the native `serial` integration combined with the powerful `template` integration.
 
